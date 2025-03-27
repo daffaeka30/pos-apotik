@@ -21,8 +21,8 @@
             </li>
 
             <li class="header">MASTER</li>
-            <li>
-                <a href="#">
+            <li class="{{ request()->routeIs('kategori.index') ? 'active' : '' }}">
+                <a href="{{ route('kategori.index') }}">
                     <i class="fa fa-list"></i> <span>Kategori</span>
                 </a>
             </li>
