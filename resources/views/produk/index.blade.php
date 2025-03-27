@@ -64,6 +64,7 @@
                 processing: true,
                 serverSide: true,
                 autoWidth: false,
+                stateSave: false,
                 ajax: {
                     url: '{{ route('produk.data') }}',
                 },
@@ -157,6 +158,7 @@
             $.get(url)
                 .done((response) => {
                     $('#modal-form [name=nama_produk]').val(response.nama_produk);
+                    $('#modal-form [name=kode_produk]').val(response.kode_produk);
                     $('#modal-form [name=id_kategori]').val(response.id_kategori);
                     $('#modal-form [name=merk]').val(response.merk);
                     $('#modal-form [name=harga_beli]').val(response.harga_beli);
