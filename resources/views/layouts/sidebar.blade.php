@@ -26,8 +26,8 @@
                     <i class="fa fa-list"></i> <span>Kategori</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{{ request()->routeIs('produk.index') ? 'active' : '' }}">
+                <a href="{{ route('produk.index') }}">
                     <i class="fa fa-cubes"></i> <span>Produk</span>
                 </a>
             </li>
