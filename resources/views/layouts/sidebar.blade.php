@@ -31,8 +31,8 @@
                     <i class="fa fa-cubes"></i> <span>Produk</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{{ request()->routeIs('member.index') ? 'active' : '' }}">
+                <a href="{{ route('member.index') }}">
                     <i class="fa fa-id-card"></i> <span>Member</span>
                 </a>
             </li>

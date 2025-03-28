@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/produk/cetak-barcode', [ProdukController::class, 'cetakBarcode'])
         ->name('produk.cetak_barcode');
     Route::resource('/produk', ProdukController::class);
+
+    // kategori
+    Route::get('/member/data', [MemberController::class, 'data'])
+        ->name('member.data');
+    Route::post('/member/cetak-member', [MemberController::class, 'cetakMember'])
+        ->name('member.cetak_member');
+    Route::resource('/member', MemberController::class);
 });
