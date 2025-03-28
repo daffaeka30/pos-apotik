@@ -19,7 +19,7 @@
             align-items: flex-start;
             padding: 5px;
         }
-    
+
         .card {
             width: 100%;
             height: 100%;
@@ -29,7 +29,7 @@
             left: 0;
             z-index: -1;
         }
-    
+
         .logo {
             position: absolute;
             top: 5px;
@@ -39,7 +39,7 @@
             align-items: center;
             gap: 5px;
         }
-    
+
         .logo p {
             font-size: 10pt;
             font-weight: bold;
@@ -47,12 +47,12 @@
             margin: 0;
             text-align: right;
         }
-    
+
         .logo img {
             width: 30px;
             height: 30px;
         }
-    
+
         .info {
             position: absolute;
             bottom: 10px;
@@ -60,7 +60,7 @@
             text-align: left;
             color: #fff;
         }
-    
+
         .nama {
             position: absolute;
             top: 100pt;
@@ -70,14 +70,14 @@
             font-weight: bold;
             color: #fff !important;
         }
-    
+
         .telepon {
             position: absolute;
             margin-top: 120pt;
             right: 16pt;
             color: #fff;
         }
-    
+
         .barcode {
             position: absolute;
             top: 105pt;
@@ -86,22 +86,25 @@
             padding: .5px;
             background: #fff;
         }
-    
+
         .barcode img {
             width: 50px;
             height: 50px;
         }
+
         .text-left {
             text-align: left;
         }
+
         .text-right {
             text-align: right;
         }
+
         .text-center {
             text-align: center;
         }
     </style>
-    
+
 
 
 </head>
@@ -112,7 +115,7 @@
             @foreach ($datamember as $key => $data)
                 <tr>
                     @foreach ($data as $item)
-                        <td>
+                        <td class="text-center">
                             <div class="box">
                                 <img class="card" src="{{ public_path('image/member.png') }}" alt="card">
                                 <div class="logo">
@@ -127,6 +130,10 @@
                                 </div>
                             </div>
                         </td>
+
+                        @if (count($datamember) == 1)
+                            <td class="text-center" style="width: 50%;"></td>
+                        @endif
                     @endforeach
                 </tr>
             @endforeach
