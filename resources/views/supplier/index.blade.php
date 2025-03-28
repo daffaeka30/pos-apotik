@@ -15,7 +15,7 @@
             <div class="box">
                 <div class="box-header with-border">
                     <button onclick="addForm('{{ route('supplier.store') }}')" class="btn btn-success btn-flat btn-xs"><i
-                            class="fa fa-plus-circle"></i> Add</button>
+                            class="fa fa-plus-circle"></i> Tambah</button>
                 </div>
                 <div class="box-body table-responsive">
                     <table class="table table-striped table-bordered">

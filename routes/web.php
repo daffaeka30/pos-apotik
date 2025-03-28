@@ -5,6 +5,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\PengeluaranController;
 
 Route::get('/', fn () => redirect()->route('login'));
 
@@ -44,4 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/supplier/data', [SupplierController::class, 'data'])
         ->name('supplier.data');
     Route::resource('/supplier', SupplierController::class);
+
+    // pengeluaran
+    Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])
+        ->name('pengeluaran.data');
+    Route::resource('/pengeluaran', PengeluaranController::class);
 });
