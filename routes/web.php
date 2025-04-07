@@ -56,6 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
     // pembelian
     Route::get('/pembelian/data', [PembelianController::class, 'data'])
         ->name('pembelian.data');
+        Route::post('/pembelian/{id}/cancel', [PembelianController::class, 'cancel'])
+            ->name('pembelian.cancel');
     Route::get('/pembelian/{id}/create', [PembelianController::class, 'create'])
         ->name('pembelian.create');
     Route::resource('/pembelian', PembelianController::class)

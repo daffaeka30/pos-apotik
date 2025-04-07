@@ -14,11 +14,11 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header with-border">
-                    <button onclick="addForm()" class="btn btn-success btn-flat btn-xs"><i
-                            class="fa fa-plus-circle"></i> Transaksi Baru</button>
-                    @empty(! session('id_pembelian'))
-                    <a href="{{ route('pembelian_detail.index') }}" class="btn btn-info btn-flat btn-xs"><i
-                            class="fa fa-edit"></i> Transaksi Aktif</a>
+                    <button onclick="addForm()" class="btn btn-success btn-flat btn-xs"><i class="fa fa-plus-circle"></i>
+                        Transaksi Baru</button>
+                    @empty(!session('id_pembelian'))
+                        <a href="{{ route('pembelian_detail.index') }}" class="btn btn-info btn-flat btn-xs"><i
+                                class="fa fa-edit"></i> Transaksi Aktif</a>
                     @endempty
                 </div>
                 <div class="box-body table-responsive">
@@ -79,7 +79,7 @@
                         data: 'bayar'
                     },
                     {
-                       data: 'aksi',
+                        data: 'aksi',
                         searchable: false,
                         sortable: false
                     },
@@ -91,13 +91,26 @@
                 processing: true,
                 bsort: false,
                 dom: 'Brt',
-                columns: [
-                {data: 'DT_RowIndex', searchable: false, sortable: false},
-                {data: 'kode_produk'},
-                {data: 'nama_produk'},
-                {data: 'harga_beli'},
-                {data: 'jumlah'},
-                {data: 'subtotal'},
+                columns: [{
+                        data: 'DT_RowIndex',
+                        searchable: false,
+                        sortable: false
+                    },
+                    {
+                        data: 'kode_produk'
+                    },
+                    {
+                        data: 'nama_produk'
+                    },
+                    {
+                        data: 'harga_beli'
+                    },
+                    {
+                        data: 'jumlah'
+                    },
+                    {
+                        data: 'subtotal'
+                    },
                 ]
             })
         });
@@ -125,6 +138,20 @@
                     .fail((errors) => {
                         alert('Tidak dapat menghapus data');
                         return;
+                    });
+            }
+        }
+
+        function cancelData(url) {
+            if (confirm('Batalkan pembelian ini dan kembalikan stok?')) {
+                $.post(url, {
+                        '_token': $('[name=csrf-token]').attr('content')
+                    })
+                    .done(() => {
+                        table.ajax.reload();
+                    })
+                    .fail(() => {
+                        alert('Tidak dapat membatalkan pembelian');
                     });
             }
         }
