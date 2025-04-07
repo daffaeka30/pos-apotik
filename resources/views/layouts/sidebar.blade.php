@@ -48,8 +48,8 @@
                     <i class="fa fa-money"></i> <span>Pengeluaran</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{{ request()->routeIs('pembelian.index') ? 'active' : '' }}">
+                <a href="{{ route('pembelian.index') }}">
                     <i class="fa fa-shopping-bag"></i> <span>Pembelian</span>
                 </a>
             </li>
