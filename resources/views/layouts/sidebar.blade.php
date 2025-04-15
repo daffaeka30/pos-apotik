@@ -53,18 +53,18 @@
                     <i class="fa fa-shopping-bag"></i> <span>Pembelian</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{{ request()->routeIs('penjualan.index') ? 'active' : '' }}">
+                <a href="{{ route('penjualan.index') }}">
                     <i class="fa fa-upload"></i> <span>Penjualan</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Lama</span>
+            <li class="{{ request()->routeIs('transaksi.index') ? 'active' : '' }}">
+                <a href="{{ route('transaksi.index') }}">
+                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Aktif</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{{ request()->routeIs('transaksi.baru') ? 'active' : '' }}">
+                <a href="{{ route('transaksi.baru') }}">
                     <i class="fa fa-shopping-cart"></i> <span>Transaksi Baru</span>
                 </a>
             </li>
