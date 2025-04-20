@@ -97,7 +97,7 @@
                         data: 'nama_produk'
                     },
                     {
-                        data: 'harga_beli'
+                        data: 'harga_jual'
                     },
                     {
                         data: 'jumlah'
