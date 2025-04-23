@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Produk;
 use App\Models\Setting;
-use Barryvdh\DomPDF\PDF;
 use App\Models\Penjualan;
 use Illuminate\Http\Request;
 use App\Models\PenjualanDetail;
+use PDF;
 
 class PenjualanController extends Controller
 {
