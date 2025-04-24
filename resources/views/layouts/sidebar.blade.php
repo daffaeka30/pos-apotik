@@ -70,8 +70,8 @@
             </li>
 
             <li class="header">REPORT</li>
-            <li>
-                <a href="#">
+            <li class="{{ request()->routeIs('laporan.index') ? 'active' : '' }}">
+                <a href="{{ route('laporan.index') }}">
                     <i class="fa fa-file"></i> <span>Laporan</span>
                 </a>
             </li>
