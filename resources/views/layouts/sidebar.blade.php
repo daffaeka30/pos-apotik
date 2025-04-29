@@ -77,8 +77,8 @@
             </li>
 
             <li class="header">SYSTEM</li>
-            <li>
-                <a href="#">
+            <li class="{{ request()->routeIs('user.index') ? 'active' : '' }}">
+                <a href="{{ route('user.index') }}">
                     <i class="fa fa-users"></i> <span>User</span>
                 </a>
             </li>

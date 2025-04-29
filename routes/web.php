@@ -11,6 +11,7 @@ use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PembelianDetailController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PenjualanDetailController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', fn () => redirect()->route('login'));
 
@@ -111,4 +112,8 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('laporan.data');
     Route::get('/laporan/pdf/{awal}/{akhir}', [LaporanController::class, 'exportPDF'])
         ->name('laporan.export_pdf');
+
+    Route::get('/user/data', [UserController::class, 'data'])
+        ->name('user.data');
+    Route::resource('/user', UserController::class);
 });
