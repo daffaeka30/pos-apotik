@@ -80,6 +80,7 @@
                                 <option value="Pil">Pil</option>
                                 <option value="Botol">Botol</option>
                                 <option value="Mililiter">Mililiter (ml)</option>
+                                <option value="Lembar">Lembar</option>
                             </select>
                             <span class="help-block with-errors"></span>
                         </div>
