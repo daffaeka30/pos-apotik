@@ -82,8 +82,8 @@
                     <i class="fa fa-users"></i> <span>User</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{{ request()->routeIs('setting.index') ? 'active' : '' }}">
+                <a href="{{ route('setting.index') }}">
                     <i class="fa fa-cog"></i> <span>Pengaturan</span>
                 </a>
             </li>
