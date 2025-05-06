@@ -6,10 +6,21 @@ use datatables;
 use App\Models\Produk;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use PDF;
 
 class ProdukController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (!$request->user()->isAdmin()) {
+                abort(403, 'Unauthorized action.');
+            }
+
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      */

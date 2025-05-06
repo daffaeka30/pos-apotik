@@ -69,4 +69,14 @@ class User extends Authenticatable
     {
         return $query->where('level', '!=', 1);
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->level === 1;
+    }
+
+    public function isKasir(): bool
+    {
+        return $this->level === 2;
+    }
 }

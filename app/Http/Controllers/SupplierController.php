@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class SupplierController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (!$request->user()->isAdmin()) {
+                abort(403, 'Unauthorized action.');
+            }
+
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      */

@@ -20,6 +20,7 @@
                 </a>
             </li>
 
+            @if (auth()->user()->level == 1)
             <li class="header">MASTER</li>
             <li class="{{ request()->routeIs('kategori.index') ? 'active' : '' }}">
                 <a href="{{ route('kategori.index') }}">
@@ -87,6 +88,19 @@
                     <i class="fa fa-cog"></i> <span>Pengaturan</span>
                 </a>
             </li>
+            @else   
+            <li class="header">TRANSAKSI</li>
+            <li class="{{ request()->routeIs('transaksi.index') ? 'active' : '' }}">
+                <a href="{{ route('transaksi.index') }}">
+                    <i class="fa fa-cart-arrow-down"></i> <span>Transaksi Aktif</span>
+                </a>
+            </li>
+            <li class="{{ request()->routeIs('transaksi.baru') ? 'active' : '' }}">
+                <a href="{{ route('transaksi.baru') }}">
+                    <i class="fa fa-shopping-cart"></i> <span>Transaksi Baru</span>
+                </a>
+            </li>
+            @endif
         </ul>
     </section>
     <!-- /.sidebar -->

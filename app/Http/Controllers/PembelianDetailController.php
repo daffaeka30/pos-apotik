@@ -7,9 +7,21 @@ use App\Models\PembelianDetail;
 use App\Models\Produk;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class PembelianDetailController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (!$request->user()->isAdmin()) {
+                abort(403, 'Unauthorized action.');
+            }
+
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      */

@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class SettingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (!$request->user()->isAdmin()) {
+                abort(403, 'Unauthorized action.');
+            }
+
+            return $next($request);
+        });
+    }
+
     public function index()
     {
         return view('setting.index');

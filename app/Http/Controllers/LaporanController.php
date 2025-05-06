@@ -6,10 +6,22 @@ use App\Models\Pembelian;
 use App\Models\Pengeluaran;
 use App\Models\Penjualan;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use PDF;
 
 class LaporanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (!$request->user()->isAdmin()) {
+                abort(403, 'Unauthorized action.');
+            }
+
+            return $next($request);
+        });
+    }
+
     public function index(Request $request)
     {
         $tanggalAwal = date('Y-m-d', mktime(0, 0, 0, date('m'), 1, date('Y')));

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProdukController;
@@ -16,17 +17,9 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', fn () => redirect()->route('login'));
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('home');
-    })->name('dashboard');
-});
-
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
     // kategori
     Route::get('/kategori/data', [KategoriController::class, 'data'])
         ->name('kategori.data');
