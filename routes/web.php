@@ -124,4 +124,9 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('setting.show');
     Route::post('/setting', [SettingController::class, 'update'])
         ->name('setting.update');
+
+    Route::get('/profil', [UserController::class, 'profil'])
+        ->name('user.profil');
+    Route::post('/profil', [UserController::class, 'updateProfil'])
+        ->name('user.update_profil');
 });

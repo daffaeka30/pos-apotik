@@ -109,7 +109,8 @@ class UserController extends Controller
             $nama = 'logo-' . date('YmdHis') . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('/image'), $nama);
 
-            $user->foto = "/image/$nama";
+            $path = '/image/' . trim($nama);
+            $user->foto = preg_replace('/\s+/', '', $path);
         }
 
         $user->update();

@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password" class="col-lg-2 control-label">Password</label>
+                            <label for="password" class="col-lg-2 control-label">Password Baru</label>
                             <div class="col-lg-6">
                                 <input type="password" name="password" id="password" class="form-control" minlength="6">
                                 <span class="help-block with-errors"></span>
@@ -95,7 +95,7 @@
                         .done(response => {
                             $('[name=name]').val(response.name);
                             $('.tampil-foto').html(
-                                `<img src="{{ url('/') }}${response.foto}" width="200">`);
+                                `<img src="{{ url('/') }}/${response.foto}" width="200">`);
                             $('.img-profil').attr('src', `{{ url('/') }}/${response.foto}`);
 
                             $('.alert').fadeIn();
