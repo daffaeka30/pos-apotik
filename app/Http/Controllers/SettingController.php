@@ -27,6 +27,10 @@ class SettingController extends Controller
         $setting->tipe_nota = $request->tipe_nota;
 
         if ($request->hasFile('path_logo')) {
+            if (file_exists(public_path($setting->path_logo))) {
+                unlink(public_path($setting->path_logo));
+            }
+
             $file = $request->file('path_logo');
             $nama = 'logo-' . date('YmdHis') . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('/image'), $nama);
@@ -35,6 +39,10 @@ class SettingController extends Controller
         }
 
         if ($request->hasFile('path_kartu_member')) {
+            if (file_exists(public_path($setting->path_kartu_member))) {
+                unlink(public_path($setting->path_kartu_member));
+            }
+
             $file = $request->file('path_kartu_member');
             $nama = 'logo-' . date('Y-m-dHis') . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('/image'), $nama);
