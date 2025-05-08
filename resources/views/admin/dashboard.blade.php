@@ -75,31 +75,71 @@
     </div>
     <!-- /.row -->
     <!-- Main row -->
-<div class="row">
-    <div class="col-lg-12">
-        <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title">Grafik Pendapatan {{ tanggal_indonesia($tanggal_awal, false) }} s/d {{ tanggal_indonesia($tanggal_akhir, false) }}</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="chart">
-                            <!-- Sales Chart Canvas -->
-                            <canvas id="salesChart" style="height: 180px;"></canvas>
-                        </div>
-                        <!-- /.chart-responsive -->
-                    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Recent Orders</h3>
                 </div>
-                <!-- /.row -->
+                <!-- /.box-header -->
+                <div class="box-body table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Member</th>
+                                <th>Cashier</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($recent_order as $order)
+                            <tr>
+                                <td>{{ $order->created_at->format('d-m-y') }}</td>
+                                <td>{{ $order->member->nama ?? '-' }}</td>
+                                <td>{{ $order->user->name ?? '' }}</td>
+                                <td>{{ $order->total_harga }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
             </div>
+            <!-- /.box -->
         </div>
-        <!-- /.box -->
+        <!-- /.col -->
+        <div class="col-lg-6">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Low Stock Products</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($low_stock_produk as $product)
+                            <tr>
+                                <td>{{ $product->nama_produk }}</td>
+                                <td>{{ $product->stok }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
     </div>
-    <!-- /.col -->
-</div>
-<!-- /.row (main row) -->
+    <!-- /.row (main row) -->
 @endsection
 
 @push('scripts')

@@ -22,4 +22,12 @@ class Penjualan extends Model
     {
         return $this->hasOne(User::class, 'id', 'id_user');
     }
+
+    // App\Models\Penjualan.php
+
+public function penjualanDetail()
+{
+    return $this->hasMany(PenjualanDetail::class, 'id_penjualan', 'id_penjualan');
+}
+
 }

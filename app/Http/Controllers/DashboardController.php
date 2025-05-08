@@ -8,6 +8,7 @@ use App\Models\Kategori;
 use App\Models\Supplier;
 use App\Models\Pembelian;
 use App\Models\Penjualan;
+use App\Models\PenjualanDetail;
 use App\Models\Pengeluaran;
 use Illuminate\Http\Request;
 
@@ -41,10 +42,15 @@ class DashboardController extends Controller
 
         $tanggal_awal = date('Y-m-01');
 
+        $recent_order = Penjualan::with('member', 'penjualanDetail.produk')->orderBy('created_at', 'desc')->take(5)->get();
+        $low_stock_produk = Produk::where('stok', '<=', 5)->orderBy('stok', 'asc')->take(5)->get();
+
         if (auth()->user()->level == '1') {
-            return view('admin.dashboard', compact('kategori', 'produk', 'supplier', 'member', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
+            return view('admin.dashboard', compact('kategori', 'produk', 'supplier', 'member', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan', 'recent_order', 'low_stock_produk'));
         } else {
             return view('kasir.dashboard');
         }
     }
 }
+
+
