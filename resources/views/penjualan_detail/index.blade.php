@@ -119,7 +119,7 @@
                                 <div class="form-group row">
                                     <label for="diterima" class="col-lg-2 control-label">Diterima</label>
                                     <div class="col-lg-8">
-                                        <input type="text" id="diterima" name="diterima" class="form-control" value="{{ $penjualan->diterima ?? 0 }}">
+                                        <input type="text" id="diterima" name="diterima" class="form-control" value="{{ $penjualan->diterima ?? 0 }}" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
