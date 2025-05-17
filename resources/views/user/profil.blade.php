@@ -37,7 +37,7 @@
                                 <span class="help-block with-errors"></span>
                                 <br>
                                 <div class="tampil-foto">
-                                    <img src="{{ url($profil->foto ?? '/') }}" width="200">
+                                    <img src="{{ url($profil->foto ?? '/') }}" width="200" class="profile-img">
                                 </div>
                             </div>
                         </div>
@@ -95,24 +95,5 @@
                         .done(response => {
                             $('[name=name]').val(response.name);
                             $('.tampil-foto').html(
-                                `<img src="{{ url('/') }}/${response.foto}" width="200">`);
-                            $('.img-profil').attr('src', `{{ url('/') }}/${response.foto}`);
-
-                            $('.alert').fadeIn();
-                            setTimeout(() => {
-                                $('.alert').fadeOut();
-                            }, 3000);
-                        })
-                        .fail(errors => {
-                            if (errors.status == 422) {
-                                alert(errors.responseJSON);
-                            } else {
-                                alert('Tidak dapat menyimpan data');
-                            }
-                            return;
-                        });
-                }
-            });
-        });
-    </script>
-@endpush
+                                `<img src="{{ url('/') }}/${response.foto}" width="200" class="profile-img">`);
+                            $('.img-profil').attr('src', `

@@ -137,9 +137,9 @@
                 $('.logo-mini').text(word);
                 $('.logo-lg').text(response.nama_perusahaan);
 
-                $('.tampil-logo').html(`<img src="{{ url('/') }}/${response.path_logo}" width="200">`);
-                $('.tampil-kartu-member').html(`<img src="{{ url('/') }}/${response.path_kartu_member}" width="300">`);
-                $('[rel=icon]').attr('href', `{{ url('/') }}/${response.path_logo}`);
+                $('.tampil-logo').html(`<img src="{{ url('/') }}${response.path_logo}" width="200">`);
+                $('.tampil-kartu-member').html(`<img src="{{ url('/') }}${response.path_kartu_member}" width="300">`);
+                $('[rel=icon]').attr('href', `{{ url('/') }}${response.path_logo}`);
             })
             .fail(errors => {
                 alert('Tidak dapat menampilkan data');

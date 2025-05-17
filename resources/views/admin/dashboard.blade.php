@@ -122,7 +122,7 @@
                                 <td>{{ $order->created_at->format('d-m-y') }}</td>
                                 <td>{{ $order->member->nama ?? '-' }}</td>
                                 <td>{{ $order->user->name ?? '' }}</td>
-                                <td>{{ $order->total_harga }}</td>
+                                <td>Rp {{ number_format($order->total_harga, 0) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -140,6 +140,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
+                    @if(count($low_stock_produk) > 0)
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -156,6 +157,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    @else
+                    <p class="text-center">There's no low stock products.</p>
+                    @endif
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -200,3 +204,4 @@ $(function() {
 });
 </script>
 @endpush
+
